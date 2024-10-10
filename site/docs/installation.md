@@ -9,13 +9,17 @@ sidebar_position: 1
 
 ## Raspberry Pi Installation
 
+:::warning USE PROPER AUTHENTIC SD CARDS
+There are multiple examples of bad quality sd cards causing boot and corruption issues. It's highly recommended to get SanDisk Ultra U1 A1 cards (16GB or larger) from an official source to ensure long life and reliable operation of your Raspberry Pi.
+:::
+
 Download the newest release (download the RatOS-\*.img.xz file under the assets dropdown) of [RatOS on github](https://github.com/Rat-Os/RatOS/releases/latest).
 Then use [Balena Etcher](https://www.balena.io/etcher/) to write that image to the SD card that goes into your raspberry pi (16GB or larger).
 
 Note: this will destroy all data on the card!
 
 :::info
-For Raspberry Pis with 1gb or less memory, it's recommended to use the 32-bit (`rpi32`) version of the image. 64-bit (`rpi64`) causes too high memory usage in some situations.
+It is recommended to use the 32-bit (`rpi32`) version of the image, 64-bit (`rpi64`) caused too high memory usage in some situations and is no longer provided.
 :::
 
 <a class="button button--primary" href="https://github.com/Rat-Os/RatOS/releases/latest">Download RatOS</a>
@@ -25,6 +29,13 @@ For Raspberry Pis with 1gb or less memory, it's recommended to use the 32-bit (`
 When the RatOS image has been written to the SD card, insert the SD card into the Raspberry Pi and turn on the Pi. After a few minutes the raspberry pi will host a hotspot called "RatOS", join this hotspot on your phone or a PC/Laptop with wifi, the password is "raspberry". When connected, open [http://RatOS.local/configure](http://RatOS.local/configure) or [http://192.168.50.1/configure](http://192.168.50.1/configure) and follow the steps presented there to setup wifi and your printers hostname.
 
 Alternatively, if you're using a pi with Ethernet, you can use an ethernet cable instead.
+
+:::danger Internet Connection is required on first run!
+There's currently a limitation in RatOS that **requires internet access** on first run. Klipper cannot compile it's c_helper functions without being connected to the internet.
+If you proceed through board flashing without the pi connected to the internet, you'll get an error saying your board is not responsive, even after it's been flashed succesfully.
+
+After succesfull flashing and detection in the configurator, an internet connection is nolonger required for operation, nor subsequent flashing.
+:::
 
 ## Preparing your control board
 
